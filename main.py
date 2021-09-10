@@ -8,14 +8,22 @@ def condense_roman_numeral(roman_numeral):
     return roman_numeral
 
 def main():
+    characters_saved = 0
+    with open('Roman.txt') as file:
+        numerals = file.readlines()
+        for numeral in numerals:
+            condensed = condense_roman_numeral(numeral)
+            characters_saved += len(numeral) - len(condensed)
+    print("Saved characters: " + str(characters_saved))
+
+    """
     test_result(condense_roman_numeral("IIII"), "IV")
     test_result(condense_roman_numeral("VIIII"), "IX")
-
     test_result(condense_roman_numeral("XXXX"), "XL")
     test_result(condense_roman_numeral("LXXXX"), "XC")
-
     test_result(condense_roman_numeral("DCCCC"), "CM")
     test_result(condense_roman_numeral("CCCC"), "CD")
+    """
 
 def test_result(a, b):
     if (a == b):
